@@ -1,0 +1,289 @@
+@import "../mixins/bem";
+@import "../variables";
+
+@include b(t-select){
+  text-align: left;
+  box-sizing: border-box;
+  position: relative;
+  
+  @include m(inline){
+    display: inline-block;
+    vertical-align: middle;
+    min-width: 160px; // 为了保证正常显示搜索输入框
+  }
+
+  @include e(holder){
+    min-height: 34px;
+    line-height: 32px;
+    border: 1px $select-border-col solid;
+    border-radius: 2px;
+    color: #333;
+    font-size: 14px;
+    background-color: #fff;
+    -webkit-user-select: none;
+    position: relative;
+    transition: border .2s ease, box-shadow .2s ease;
+    box-sizing: border-box;
+
+    @include m(sm){
+      min-height: 28px;
+      line-height: 26px;
+      font-size: 12px;
+    }
+
+    @include m(disabled){
+      background-color: #f5f5f5;
+      color: #b3b3b3;
+      cursor: not-allowed;
+    }
+
+    @include m(opened){
+      border: 1px $main-col solid;
+      box-shadow: 0 0 0 2px #e2e5f6;
+
+      .t-form__control--error &{
+        box-shadow: 0 0 0 2px #ffe3e2;
+      }
+    }
+
+    .t-form__control--error &{
+      border-color: rgba($feature-col1, 0.92);
+      background-color: #ffe3e2;
+    }
+  }
+
+  @include e(icon){
+    width: 30px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    text-align: center;
+    height: 34px;
+
+    .t-select__holder--sm &{
+      height: 28px;
+    }
+
+    &:before{
+      content: '';
+      border: 4px transparent solid;
+      border-top: 6px #aaa solid;
+      position: absolute;
+      top: 50%;
+      right: 11px;
+      margin-top: -3px;
+    }
+
+    .t-select__holder--opened &:before{
+      border: 4px transparent solid;
+      border-bottom: 6px #aaa solid;
+      top: calc(50% - 6px)
+    }
+
+    .t-select__holder-can-reset.t-select__holder-has-value:hover &{
+      display: none;
+    }
+  }
+
+  @include e(icon-clean) {
+    width: 30px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    text-align: center;
+    height: 34px;
+    display: none;
+
+    &:after{
+      content: '\e667';
+      font-family: tasf;
+      color: #aaa;
+    }
+
+    .t-select__holder-has-value:hover &{
+      display: block;
+    }
+  }
+
+  @include e(content){
+    padding-left: 5px;
+    margin-right: 30px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    height: 100%;
+
+    @include m(ph){
+      // placeholder
+      color: $input-placeholder-col;
+    }
+  }
+
+  @include e(popper-shadow){
+    border: 2px lighten($main-col, 42) solid;
+    border-radius: 5px;
+    margin-left: -2px;
+    margin-right: -2px;
+    will-change: auto !important; // 修复chrome下打开弹层后无法滚动问题
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    &[x-placement="bottom-start"]{
+      margin-top: -2px;
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+      border-top: 0;
+    }
+    &[x-placement="top-start"]{
+      margin-bottom: -2px;
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+      border-bottom: 0;
+    }
+
+    .t-form__control--error &{
+      border-color: #ffe3e2;
+    }
+  }
+
+  @include e(popper){
+    border-radius: 3px;
+    border: 1px $main-col solid;
+    background-color: #fff;
+    //overflow-y: auto;
+    //overflow-x: hidden;
+    [x-placement="bottom-start"] &{
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+    }
+    [x-placement="top-start"] &{
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+
+    ul{
+      margin: 0;
+      padding: 0;
+    }
+
+    &-list {
+      -ms-overflow-style: scrollbar;
+    }
+
+    .t-form__control--error &{
+      border-color: rgba($feature-col1, 0.92);
+    }
+
+    .t-tree{
+      padding-top: 0;
+    }
+  }
+
+  @include e(popper-item){
+    list-style: none;
+    padding: 0 5px;
+    height: 34px;
+    line-height: 32px;
+    font-size: 14px;
+    cursor: pointer;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    .t-select__popper--sm &{
+      height: 28px;
+      line-height: 26px;
+      font-size: 12px;
+    }
+    
+    &:hover{
+      background-color: rgb(239, 244, 254);
+    }
+
+    @include m(active){
+      position: relative;
+      font-weight: bold;
+      color: rgb(77, 98, 193);
+      padding-right: 28px;
+
+      &:after{
+        content: '\e65e';
+        font-family: tasf;
+        width: 30px;
+        position: absolute;
+        top: 0;
+        right: 0;
+        line-height: 34px;
+        font-size: 14px;
+        text-align: center;
+
+        .t-select__popper--sm &{
+          line-height: 28px;
+          font-size: 12px;
+        }
+      }
+    }
+  }
+
+  @include e(search) {
+    box-shadow: none !important;
+    input{
+      border-color: $input-border-col !important;
+    }
+    .tasf-qingchu{
+      font-size: 14px;
+    }
+  }
+
+  @include e(tags) {
+    padding-top: 4px;
+    margin-left: -5px;
+    line-height: 26px;
+
+    .t-select__holder--sm & {
+      padding-top: 2px;
+      line-height: 24px;
+    }
+
+    @include m(auto-height) {
+      white-space: normal;
+      max-height: 80px;
+      overflow: auto;
+    }
+    
+    .t-tag{
+      background-color: #fafafa;
+      border: 1px #f0f0f0 solid;
+      height: 22px;
+      line-height: 20px;
+      box-sizing: border-box;
+      color: $text-col-4;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 100%;
+      margin-right: 0;
+      margin-left: 5px;
+      text-align: left;
+
+      .t-select__holder--sm & {
+        height: 20px;
+        line-height: 18px;
+      }
+    }
+    .t-tag__switch{
+      top: 4px !important;
+      color: #aaa;
+    }
+  }
+
+  @include e(text) {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    @include m(auto-height) {
+      white-space: normal;
+      word-break: break-all;
+    }
+  }
+}

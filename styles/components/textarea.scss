@@ -1,0 +1,103 @@
+@import "../mixins/bem";
+
+@include b(t-textarea){
+  position: relative;
+  textarea {
+    display: block;
+    width: 100%;
+    border: 1px $input-border-col solid;
+    border-radius: 2px;
+    outline: none;
+    box-sizing: border-box;
+    padding: 4px 9px;
+    transition: border-color,box-shadow .2s ease;
+    font-family: "Microsoft YaHei", sans-serif;
+
+    //height: 34px;
+    line-height: 20px;
+
+    font-size: 14px;
+
+    &::-webkit-input-placeholder{
+      color: $text-col-1;
+    }
+
+    &:-moz-placeholder{
+      color: $text-col-1;
+    }
+
+    &::-moz-placeholder{
+      color: $text-col-1;
+    }
+
+    &::-ms-input-placeholder{
+      color: $text-col-1;
+    }
+
+    &:focus{
+      border-color: $main-col;
+      box-shadow: 0 0 0 2px lighten($main-col, 42);
+    }
+
+    &:disabled{
+      background-color: #e3e3e3;
+      color: $form-disabled-col;
+      cursor: not-allowed;
+    }
+  }
+
+  @include e(placeholder){
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 0 9px;
+    line-height: 34px;
+    font-size: 14px;
+    color: $text-col-1;
+    text-align: left;
+  }
+
+  @include e(icon){
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 30px;
+    text-align: center;
+    line-height: 34px;
+    color: $text-col-1;
+
+    &-suf{
+      right: 0;
+      left: auto;
+    }
+  }
+
+  @include m(inline){
+    display: inline-block;
+  }
+
+  @include m(sm){
+    textarea{
+      line-height: 18px;
+      font-size: 12px;
+    }
+
+    @include e(placeholder){
+      font-size: 12px;
+      line-height: 28px;
+    }
+
+    @include e(icon){
+      line-height: 28px;
+      font-size: 14px;
+    }
+  }
+
+  @include m(disabled){
+    color: $form-disabled-col;
+    cursor: not-allowed;
+  }
+}

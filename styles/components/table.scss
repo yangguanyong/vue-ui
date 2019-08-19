@@ -1,0 +1,200 @@
+@import "../mixins/bem";
+@import "../variables";
+
+@include b(t-table){
+  @include e(operations){
+    //padding: 10px 0 0;
+
+    &:after{
+      content: '';
+      display: block;
+      clear: both;
+      height: 0;
+    }
+
+    &-left{
+      font-size: 12px;
+      float: left;
+      line-height: 28px;
+      .t-checkbox__checkbox-wrapper{
+        margin-left: 27px;
+        -webkit-user-select: none;
+
+        &+.t-table__operations-selected{
+          margin-left: 30px;
+        }
+      }
+    }
+
+    &-right{
+      float: right;
+    }
+
+    &-selected{
+      i{
+        color: $table-count-col;
+        font-weight: bold;
+        font-style: normal;
+      }
+    }
+
+    & + .t-table__wrapper{
+      margin-top: 10px;
+    }
+  }
+
+  @include e(fragment) {
+    @include m(fixed) {
+      overflow: hidden;
+      // fixed 表格隐藏滚动条、禁止水平滚动
+      .eb-bar-v, .eb-bar-h{
+        display: none;
+      }
+      .eb-content{
+        overflow-x: hidden !important;
+      }
+
+      .is-gecko & .eb-content{
+        // 去除火狐底部间隙
+        height: calc(100% - 0px) !important;
+      }
+
+      position: relative;
+      z-index: 1;
+    }
+  }
+  
+  @include e(header) {
+    overflow: hidden;
+  }
+  
+  @include e(body){
+    overflow: hidden;
+  }
+
+  @include e(footer){
+    padding: 15px 0;
+
+    &:after{
+      content: '';
+      display: block;
+      height: 0;
+      clear: both;
+    }
+    
+    &-left{
+      color: $text-col-2;
+      font-size: 12px;
+      float: left;
+      line-height: 26px;
+    }
+
+    &-right{
+      float: right;
+    }
+  }
+
+  table{
+    width: 100%;
+    display: table;
+    margin: 0;
+    table-layout: fixed;
+    word-break: break-all;
+
+    thead {
+      tr{
+        border-top: 0;
+      }
+    }
+
+    th{
+      padding: 0 10px;
+      height: 40px;
+      vertical-align: middle;
+      font-size: 12px;
+      color: #333;
+      background-color: $table-header-bg;
+      border: 0;
+      font-weight: bold;
+      text-align: left;
+      border: 1px $table-border-col solid;
+    }
+
+    tbody tr{
+      background-color: #fff;
+      &.is-hover{
+        background-color: rgb(240, 244, 255);
+      }
+    }
+
+    td{
+      height: 40px;
+      vertical-align: middle;
+      padding: 0 10px;
+      border: 1px transparent solid;
+      //border: 0;
+      //border-top: 0;
+      border-bottom: 1px $table-border-col solid;
+      font-size: 12px;
+      word-wrap: break-word;
+    }
+  }
+
+  @include e(wrapper){
+    position: relative;
+  }
+
+  @include e(left-frag){
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 1;
+    &:after{
+      content: '';
+      position: absolute;
+      width: 1px;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      display: block;
+      box-shadow: 0 0 10px #888;
+      transition: opacity .5s ease;
+
+      .is-on-left &{
+        opacity: 0;
+      }
+    }
+  }
+
+  @include e(right-frag){
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 1;
+
+    &:after{
+      content: '';
+      position: absolute;
+      width: 1px;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      display: block;
+      box-shadow: 0 0 10px #888;
+      transition: opacity .5s ease;
+
+      .is-on-right &{
+        opacity: 0;
+      }
+    }
+  }
+
+  @include e(no-data){
+    text-align: center;
+    font-size: 38px;
+    color: #ddd;
+    position: relative;
+    padding-top: 70px;
+    padding-bottom: 70px;
+  }
+}

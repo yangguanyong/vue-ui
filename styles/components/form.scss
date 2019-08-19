@@ -1,0 +1,347 @@
+@import "../mixins/bem";
+@import "../variables";
+
+@include b(t-form){
+
+  @include e(title){
+    height: 50px;
+    border-bottom: 1px solid black;
+  }
+
+  @include e(container){
+    background: #EDEDED;
+    text-align: center;
+    padding: 60px 240px;
+  }
+
+  @include e(item){
+    padding-top: 5px;
+    padding-bottom: 5px;
+    &:after{
+      content: '';
+      display: block;
+      clear: both;
+      height: 0;
+    }
+
+    &--inline{
+      display: inline-block;
+      vertical-align: top;
+    }
+
+    &--label-top{
+      .t-form__label{
+        display: block;
+        padding-right: 0;
+        text-align: left;
+        float: none;
+        width: auto;
+      }
+      .t-form__control{
+        margin-left: auto;
+      }
+    }
+  }
+
+  @include e(label){
+    float: left;
+    line-height: 32px;
+    padding-right: 10px;
+    width: 80px;
+    text-align: right;
+    color: #333;
+    font-size: 14px;
+    box-sizing: border-box;
+
+    @include m(required){
+      &:before{
+        content: '*';
+        color: $feature-col1;
+      }
+    }
+  }
+
+  @include e(control){
+    margin-left: 80px;
+    line-height: 32px;
+    position: relative;
+    &:after{
+      content: '';
+      display: block;
+      clear: both;
+      height: 0;
+    }
+
+    .t-input {
+      .el-date-editor.el-input{
+        width: 100%;
+      }
+    }
+
+    @include m(error){
+      .t-textarea{
+        textarea{
+          border-color: rgba($feature-col1, 0.92);
+          background-color: #ffe3e2;
+          &:focus{
+            box-shadow: 0 0 0 2px #ffe3e2
+          }
+        }
+      }
+
+      .tbc-input-number{
+        border-color: rgba($feature-col1, 0.92);
+        background-color: #ffe3e2;
+        &:focus{
+          box-shadow: 0 0 0 2px #ffe3e2
+        }
+      }
+
+      .edui-editor{
+        border-color: rgba($feature-col1, 0.92) !important;
+      }
+    }
+  }
+
+  @include e(error){
+    position: absolute;
+    color: white;
+    background-color: rgba($feature-col1, 0.92);
+    z-index: 1;
+    bottom: -2px;
+    left: 0px;
+    padding: 5px;
+    line-height: 1.2;
+    border-radius: 3px;
+    font-size: 14px;
+    -ms-transform: translate(0, 100%);
+    transform: translate(0, 100%);
+    text-align: left;
+    white-space: normal;
+
+    //&:after{
+    //  content: '';
+    //  width: 0px;
+    //  height: 0px;
+    //  border-bottom: 6px solid rgba($feature-col1, 0.92);
+    //  // border-bottom:6px solid #FF0000;
+    //  // opacity: 0.8;
+    //  border-top: 6px solid transparent;
+    //  border-left:6px solid transparent;
+    //  border-right: 6px solid transparent;
+    //  position: absolute;
+    //  top: -12px;
+    //  left: 10%;
+    //  margin-left: -3px;
+    //}
+  }
+
+  @include e(radio-wrapper){
+    display: inline-block;
+    height: 34px;
+    line-height: 32px;
+    &+&{
+      margin-left: 20px;
+    }
+  }
+
+  @include e(radio){
+    display: none;
+    &+label{
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      background: lightgray;
+      cursor: pointer;
+      display:inline-block;
+      position: relative;
+      -moz-box-shadow:1px 1px 1px #999 inset;               /* For Firefox3.6+ */
+      -webkit-box-shadow:1px 1px 1px #999 inset;            /* For Chrome5+, Safari5+ */
+      box-shadow:1px 1px 1px #999 inset;                    /* For Latest Opera */
+      vertical-align: -3px;
+    }
+
+    &:checked+ label:after{
+      content: '';
+      width: 9px;
+      height: 9px;
+      position: absolute;
+      top: 3px;
+      left: 3px;
+      background: #293D97;
+      border-radius: 50%;
+    }
+  }
+
+  @include e(radio-label){
+    //vertical-align: middle;
+    margin-left: 2px;
+  }
+
+  @include e(checkbox-wrapper){
+    display: inline-block;
+    height: 34px;
+    line-height: 32px;
+    &+&{
+      margin-left: 20px;
+    }
+  }
+
+  @include e(checkbox){
+    display: none;
+    &+label{
+      top:3px;
+      width: 16px;
+      height: 16px;
+      border: 1px #d2d2d2 solid;
+      border-radius: 2px;
+      background: #fff;
+      cursor: pointer;
+      display:inline-block;
+      position: relative;
+      margin-right: 10px;
+      box-shadow: 0 0 1px #ccc;
+    }
+
+    &:checked+ label{
+      box-shadow: none;
+      background: #374fbb;
+      border: 1px #374fbb solid;
+      &:after{
+        content: '';
+        width: 8px;
+        height: 4px;
+        position: absolute;
+        border: 2px solid #293E99;
+        opacity: 0.4;
+        transform: rotate(-45deg);
+        -ms-transform: rotate(-45deg);
+        -moz-transform: rotate(-45deg);
+        -webkit-transform: rotate(-45deg);
+        opacity: 1;
+        border-top: none;
+        border-right: none;
+        border-left: 2px #fff solid;
+        border-bottom: 2px #fff solid;
+        left: 2px;
+        top: 3px;
+      }
+    }
+  }
+
+  @include e(checkbox-label){
+    //vertical-align: middle;
+    margin-left: 2px;
+  }
+
+  @include m(label-top){
+    @include e(label){
+      &:not(.tbc-form__label--normal){
+        display: block;
+        padding-right: 0;
+        text-align: left;
+        float: none;
+        width: auto;
+      }
+    }
+
+    @include e(control){
+      &:not(.tbc-form__control--normal){
+        margin-left: auto;
+      }
+    }
+  }
+
+  @include m(inline){
+    @include e(item){
+      display: inline-block;
+      vertical-align: top;
+    }
+  }
+
+  @include m(sm){
+    font-size: 14px;
+
+    @include e(item) {
+      padding-top: 4px;
+      padding-bottom: 4px;
+    }
+
+    @include e(control){
+      line-height: 28px;
+    }
+
+    @include e(label){
+      font-size: 12px;
+      line-height: 28px;
+    }
+
+    .filters__item, .tbc-radio2{
+      height: 28px;
+      line-height: 26px;
+      margin-right: 10px;
+    }
+
+    .t-input{
+      input{
+        height: 28px;
+        font-size: 12px;
+        line-height: 26px;
+      }
+      &__icon{
+        line-height: 28px;
+        &, [class^="tasf-"]{
+          font-size: 14px !important;
+        }
+      }
+    }
+
+    .t-select{
+      min-height: 28px;
+      line-height: 26px;
+    }
+
+    .t-input-any{
+      height: 28px;
+      line-height: 26px;
+      &.adv-search{
+        min-height: 28px;
+      }
+    }
+
+    @include e(checkbox-wrapper){
+      height: 28px;
+      line-height: 26px;
+    }
+
+    @include e(radio-wrapper){
+      height: 28px;
+      line-height: 26px;
+    }
+
+    @include e(placeholder){
+      height: 28px;
+      line-height: 26px;
+      font-size: 12px;
+    }
+  }
+
+  // 输入框兼容ie9 placeholder 用到
+  @include e(placeholder){
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, .1);
+    color: #bbb;
+    font-size: 14px;
+    line-height: 32px;
+    padding-left: 6px;
+    text-align: left;
+
+    .t-input--sm &{
+      line-height: 26px;
+    }
+  }
+}

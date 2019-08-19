@@ -1,0 +1,132 @@
+@import "../mixins/bem";
+
+@include b(t-layout) {
+  // overflow: hidden; // 清除子元素的margin
+  
+  @include e(nav) {
+  }
+
+  @include e(body) {
+    // margin: 15px; // 新外框已经存在padding
+    // display: table;
+    width: 100%;
+    box-sizing: border-box;
+    @include m(white){
+      border: 1px #e3e3e3 solid;
+      background-color: #fff;
+      border-radius: 5px;
+    }
+    // zoom: 1;
+    &:after{
+      display:block;
+      clear:both;
+      content:"";
+      visibility:hidden;
+      height:0
+    }
+  }
+
+  @include e(main) {
+    // overflow: hidden;
+    // display: table-cell;
+    vertical-align: top;
+    // width: 5000px;
+    position: relative;
+    float: left;
+    box-sizing: border-box;
+    // transition: all 0.5s;
+    // width: calc(100% - 265px);
+    @include m(white){
+      border: 1px #e3e3e3 solid;
+      background-color: #fff;
+      border-radius: 5px;
+    }
+  }
+
+  @include e(main-item){
+    border-bottom: 1px solid #e1e1e1;
+    padding: 10px 10px;
+    @include m(pink){
+      background: #F8F9FB;
+    }
+    @include m(blue){
+      background: #374FBB;
+    }
+    @include m(gray){
+      background: #eee;
+    }
+  }
+
+  @include e(aside) {
+    width: 250px;
+    float: right;
+    margin-left: 15px;
+    border: 1px #e1e1e1 solid;
+    border-radius: 5px;
+    transition: box-shadow 0.2s ease;
+    // overflow: hidden;
+    // transition: all 0.5s;
+    box-sizing: border-box;
+    position: relative;
+  }
+
+  @include e(aside-head) {
+    background-color: #364fbb;
+    height: 30px;
+    line-height: 30px;
+    font-size: 12px;
+    color: #fff;
+    padding-left: 10px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    width: 248px;
+    box-sizing: border-box;
+    // overflow: hidden;
+  }
+
+  @include e(aside-body) {
+    padding: 10px;
+    background-color: #f7f9fa;
+    width: 248px;
+    box-sizing: border-box;
+    // overflow: hidden;
+  }
+
+  @include e(aside-foot) {
+    text-align: right;
+    padding: 10px 10px 15px;
+    background-color: #f7f9fa;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    width: 248px;
+    box-sizing: border-box;
+    // overflow: hidden;
+  }
+
+  @include e(aside-close){
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    width: 50px;
+    text-align: right;
+    padding-right: 10px;
+    height: 30px; // 和 head一致
+    line-height: 30px;
+    cursor: pointer;
+    color: #fff;
+    background: #364fbb;
+    border-top-right-radius: 5px;
+  }
+
+  @include e(animate) {
+    transition: all 0.5s;
+    -moz-transition: all 0.5s; /* Firefox 4 */
+    -webkit-transition: all 0.5s; /* Safari 和 Chrome */
+    -o-transition: all 0.5s; /* Opera */
+    -ms-transition: all 1s;
+  }
+  @include e(hidden){
+    overflow: hidden;
+  }
+
+}

@@ -1,0 +1,278 @@
+@import "../mixins/bem";
+
+$dark-bg: #242632;
+$dark-hover-bg: #282F4C;
+$dark-active-bg: #374FBB;
+$dark-color: #FFFFFF;
+
+$light-active-color: #374FBB;
+$light-active-bg: #F5F6FB;
+$light-bg: #FFFFFF;
+$light-color: #324057;
+$light-border-color: #e1e1e1;
+
+$menu-active-color: #374FBB;
+$menu-active-bg: #F5F6FB;
+$menu-bg: #FFFFFF;
+$menu-color: #324057;
+$menu-shadow-color: #ccc;
+
+$default-active-bg: #283EA1;
+$default-bg: #374FBB;
+$default-hover-bg: #4963D4;
+$default-color: #FFFFFF;
+
+$mediumHeight: 45px;
+$smallHeight: 35px;
+
+$gap: 5px; // 间隙
+
+@include b(t-nav) {
+  ul, ol, li {
+    padding-left: 0px;
+    list-style: none;
+  }
+  font-size: 0px;
+  @include m(medium){
+    height: $mediumHeight;
+    >ul{
+      height: $mediumHeight;
+    }
+  }
+  @include m(small){
+    height: $smallHeight;
+    >ul{
+      height: $smallHeight;
+    }
+  }
+  @include m(dark){
+    background: $dark-bg;
+  }
+  @include m(light){
+    background: $light-bg;
+    border: 1px solid $light-border-color;
+  }
+  @include m(default){
+    background: $default-bg;
+  }
+}
+
+@include b (t-nav-item) {
+  font-size: 14px;
+  list-style: none;
+  min-width: 90px;
+  position: relative;
+  text-align: center;
+  >span{
+    height: 100%;
+    width: 100%;
+    display: inline-block;
+    box-sizing: border-box;
+    >div{
+      padding: 0px 10px;
+    }
+  }
+  @include m(medium){
+    height: $mediumHeight;
+    line-height: $mediumHeight;
+  }
+  @include m(small){
+    height: $smallHeight;
+    line-height: $smallHeight;
+  }
+  @include m(dark){
+    cursor: pointer;
+    .router-link-active{
+      background: $dark-active-bg;
+    }
+    color: $dark-color;
+    &:hover{
+      background: $dark-hover-bg;
+    }
+  }
+  @include m(light){
+    color: $light-color;
+    cursor: pointer;
+    >span{
+      &:after{
+        content: '';
+        right: 50%;
+        height: 3px;
+        background: $light-active-color;
+        position: absolute;
+        bottom: 0px;
+        left: 50%;
+        -webkit-transition: all .3s;
+        transition: all .3s;
+      }
+    }
+    &:hover{
+      >span{
+        color: $light-active-color;
+        &:after{
+          left: 0px;
+          right: 0px;
+        }
+      }
+    }
+    >.router-link-active{
+      color: $light-active-color;
+      &:after{
+        content: '';
+        right: 0px;
+        height: 3px;
+        background: $light-active-color;
+        position: absolute;
+        bottom: 0px;
+        left: 0px;
+      }
+    }
+  }
+  @include m(default){
+    cursor: pointer;
+    .router-link-active{
+      background: $default-active-bg;
+    }
+    color: $default-color;
+    &:hover{
+      background: $default-hover-bg;
+    }
+  }
+  @include m(left){
+    float: left;
+  }
+  @include m(right){
+    float: right;
+  }
+}
+
+@include b (t-nav-sub) {
+  z-index: 999;
+  position: absolute;
+  @include m(bottom-left){
+    >ul{
+      margin-top: $gap;
+    }
+  }
+  @include m(bottom-right){
+    right: 0px;
+    >ul{
+      margin-top: $gap;
+    }
+  }
+  @include m(left) {
+    left: calc(-100% - #{$gap});
+    top: 0px;
+    >ul{
+      margin-right: $gap;
+    }
+  }
+  @include m(right) {
+    left: 150px;
+    top: 0px;
+    >ul{
+      margin-left: $gap;
+    }
+  }
+  @include m(dark){
+    >ul{
+      background: $dark-bg;
+      border-radius: 4px;
+    }
+  }
+  @include m(light){
+    >ul{
+      border: 1px solid $light-border-color;
+      background: $light-bg;
+      border-radius: 4px;
+    }
+  }
+  @include m(default){
+    >ul{
+      background: $default-bg;
+      border-radius: 4px;
+    }
+  }
+  @include m(menu){
+    >ul{
+      background: $menu-bg;
+      margin-top: 2px;
+      box-shadow: 0 0 5px $menu-shadow-color;
+    }
+  }
+}
+
+@include b (t-nav-sub-item) {
+  font-size: 14px;
+  height: 40px;
+  width: 150px;
+  line-height: 40px;
+  text-align: left;
+  position: relative;
+  cursor: pointer;
+  >span{
+    height: 100%;
+    width: 100%;
+    display: inline-block;
+    box-sizing: border-box;
+    >div{
+      padding: 0px 10px;
+    }
+  }
+  &:first-child{
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    >span{
+      border-top-left-radius: 4px;
+      border-top-right-radius: 4px;
+    }
+  }
+  &:last-child{
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+    >span{
+      border-bottom-left-radius: 4px;
+      border-bottom-right-radius: 4px;
+    }
+  }
+  @include m(dark){
+    .router-link-active{
+      background: $dark-active-bg;
+    }
+    color: $dark-color;
+    &:hover{
+      background: $dark-hover-bg;
+    }
+  }
+  @include m(light){
+    color: $light-color;
+    &:hover{
+      background: $light-active-bg;
+      color: $light-active-color;
+    }
+    .router-link-active{
+      background: $light-active-bg;
+      color: $light-active-color;
+    }
+  }
+  @include m(default){
+    .router-link-active{
+      background: $default-active-bg;
+    }
+    color: $default-color;
+    &:hover{
+      background: $default-hover-bg;
+    }
+  }
+  @include m(menu){
+    color: $menu-color;
+    &:hover{
+      background: $menu-active-bg;
+      color: $menu-active-color;
+    }
+    .router-link-active{
+      background: $menu-active-bg;
+      color: $menu-active-color;
+    }
+  }
+}

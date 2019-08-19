@@ -1,0 +1,42 @@
+/* color */
+$main-col: #374fbb;
+$feature-col1: #ff5d5b;
+
+$line-col-1: #f0f0f0;
+$line-col-2: #e3e3e3;
+$line-col-3: #cccccc;
+$line-col-4: #999999;
+
+$fill-col-1: #f8f9fb;
+$fill-col-2: #f1f2f7;
+$fill-col-3: #e6e7eb;
+$fill-col-4: #999999;
+
+$text-col-1: #b2b2b2;
+$text-col-2: #888888;
+$text-col-3: #666666;
+$text-col-4: #333333;
+
+/* components */
+/* 表单元素错误颜色 */
+$form-error-col: $feature-col1;
+/* 表单禁选文字颜色 */
+$form-disabled-col: #b3b3b3;
+
+/* 徽标颜色 */
+$badge-col: $feature-col1;
+
+/* 表格边框颜色 */
+$table-border-col: $line-col-1;
+/* 表头背景颜色 */
+$table-header-bg: $fill-col-3;
+/* 表格已选数目颜色 */
+$table-count-col: $feature-col1;
+
+$input-border-col: $line-col-2;
+$input-placeholder-col: $text-col-1;
+
+$tag-border-col: $line-col-3;
+
+$select-border-col: $line-col-2;
+

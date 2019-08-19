@@ -1,0 +1,85 @@
+@import "../mixins/bem";
+@import "../mixins/btn";
+@import "../variables";
+
+$xBarHeight: 8px;
+$yBarWeight: 8px;
+$borderRadius: ($xBarHeight / 2);
+$slideBg: rgba(0, 0, 0, .08);
+
+$blockBgActive: rgba(0, 0, 0, .3);
+$blockBg: rgba(63, 51, 51, 0.15);
+
+@include b(scroll-bar) {
+
+  @include e(wrapper){
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden; // 当自定义的滚动条滚到最右边，然后改变框宽度，会出现原生滚动条
+  }
+
+  @include e(content-wrap){
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  @include e(x-bar){
+    width: 100%;
+    height: $xBarHeight;
+    bottom: 0px;
+    left: 0px;
+    position: absolute;
+    border-radius: $borderRadius;
+    @include m(active){
+      background: $slideBg;
+    }
+  }
+
+  @include e(x-slide-block){
+    height: $xBarHeight;
+    position: absolute;
+    bottom: 0px;
+    border-radius: $borderRadius;
+    background: $blockBg;
+    cursor: pointer;
+    @include m(active){
+      background: $blockBgActive;
+    }
+  }
+
+  @include e(y-bar){
+    height: 100%;
+    width: $yBarWeight;
+    right: 0px;
+    top: 0px;
+    position: absolute;
+    border-radius: $borderRadius;
+    @include m(active){
+      background: $slideBg;
+    }
+  }
+
+  @include e(y-slide-block){
+    width: $yBarWeight;
+    position: absolute;
+    right: 0px;
+    border-radius: $borderRadius;
+    background: $blockBg;
+    cursor: pointer;
+    @include m(active){
+      background: $blockBgActive;
+    }
+  }
+
+  @include e(drag){
+    width: 100%;
+    height: 100%;
+    -webkit-user-select:none;
+    -moz-user-select:none;
+    -ms-user-select:none;
+    user-select:none;
+  }
+
+}

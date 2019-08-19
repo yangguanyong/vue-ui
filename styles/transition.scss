@@ -1,0 +1,75 @@
+.fadein{
+  &-enter{
+    opacity: .1;
+    transform: translateY(-10%);
+    -ms-transform:translateY(-10%); 	/* IE 9 */
+    -moz-transform:translateY(-10%); 	/* Firefox */
+    -webkit-transform:translateY(-10%);/* Safari 和 Chrome */
+  }
+  &-enter-active{
+    transition: transform, opacity .2s ease-out;
+  }
+  &-leave-active{
+    transition: transform, opacity .2s ease-out;
+    opacity: .1;
+    transform: translateY(-10%);
+    -ms-transform:translateY(-10%); 	/* IE 9 */
+    -moz-transform:translateY(-10%); 	/* Firefox */
+    -webkit-transform:translateY(-10%);/* Safari 和 Chrome */
+  }
+}
+
+.slide-down{
+  $this: &;
+  &-leave-active{
+    transition: transform .2s ease-out;
+    transform: scaleY(0);
+    transform-origin: left top;
+    &[x-placement^="top"]{
+      transform-origin: left bottom;
+    }
+  }
+  &-enter{
+    //transition: transform .2s ease-out;
+    //transform-origin: left top;
+    transform: scaleY(0);
+  }
+  &-enter-active{
+    transition: transform .2s ease-out;
+    transform-origin: left top;
+    &[x-placement^="top"]{
+      transform-origin: left bottom;
+    }
+  }
+}
+
+.slide-from-right{
+  &-enter{
+    transform: translate3d(100%, 0, 0);
+    -ms-transform:translate3d(100%, 0, 0); 	/* IE 9 */
+    -moz-transform:translate3d(100%, 0, 0); 	/* Firefox */
+    -webkit-transform:translate3d(100%, 0, 0);/* Safari 和 Chrome */
+  }
+  &-enter-active{
+    transition: transform .5s;
+  }
+  &-leave-active{
+    transition: transform .2s;
+    transform: translate3d(100%, 0, 0);
+    -ms-transform:translate3d(100%, 0, 0); 	/* IE 9 */
+    -moz-transform:translate3d(100%, 0, 0); 	/* Firefox */
+    -webkit-transform:translate3d(100%, 0, 0);/* Safari 和 Chrome */
+  }
+}
+
+.fade-in{
+  &-enter{
+    opacity: 0;
+  }
+  &-enter-active{
+    transition: opacity .5s;
+  }
+  &-leave-active{
+    transition: opacity .2s;
+  }
+}

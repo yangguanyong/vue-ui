@@ -1,0 +1,112 @@
+@import "../mixins/bem";
+
+@include b(t-pagin){
+  // box-shadow: 0 0 10px #ddd;
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 14px;
+
+  .select-pseudo{
+    height: 28px;
+    line-height: 26px;
+    max-width: 65px !important;
+    min-width: 40px !important
+  }
+  
+  /* 分页组件条数下拉框样式 */
+  .t-select__holder{
+    height: 28px;
+    line-height: 26px;
+    .t-select__icon{
+      height: 26px;
+    }
+    .t-select__text{
+      font-size: 12px;
+    }
+  }
+
+  .t-select__popper-item--active{
+    padding-right: 25px;
+  }
+
+  @include e(btns){
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  @include e(btn){
+    box-sizing: content-box;
+    float: left;
+    padding: 0 3px;
+    min-width: 26px;
+    height: 26px;
+    line-height: 26px;
+    text-align: center;
+    background-color: #fff;
+    cursor: pointer;
+    font-size: 12px;
+    user-select: none;
+    border: 1px solid $line-col-2;
+    margin-right: -1px;
+
+    &:first-child{
+      border-top-left-radius: 3px;
+      border-bottom-left-radius: 3px;
+      color: #a8a8a8;
+    }
+
+    &:last-child{
+      border-top-right-radius: 3px;
+      border-bottom-right-radius: 3px;
+      color: #a8a8a8;
+    }
+
+    &:hover{
+      color: $main-col;
+    }
+
+    @include m(hover){
+      &:hover{
+        font-family: consolas;
+        background-color: $main-col;
+        color: #fff;
+      }
+    }
+
+    @include m(active){
+      background-color: $main-col;
+      border-color:$main-col;
+      color: #fff;
+      &:hover{
+        color: #fff;
+      }
+    }
+
+    @include m(disabled){
+      cursor: not-allowed;
+      &, &:hover{
+        color: #ddd;
+      }
+    }
+  }
+
+  @include e(size){
+    display: inline-block;
+    vertical-align: middle;
+    height: 28px;
+    margin-left: 8px;
+    font-size: 12px;
+    &>*{
+      display: inline-block;
+      vertical-align: middle;
+    }
+    input{
+      height: 28px;
+      width: 40px;
+      border-radius: 3px;
+      font: 14px arial;
+      vertical-align: middle;
+      box-sizing: border-box;
+    }
+  }
+}

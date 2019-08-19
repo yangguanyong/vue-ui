@@ -1,0 +1,38 @@
+@import "variables";
+
+[class^="t-"]{
+  box-sizing: border-box;
+}
+
+.t-padding1{padding: $s1;}
+.t-padding2{padding: $s2;}
+.t-padding3{padding: $s3;}
+.t-padding4{padding: $s4;}
+
+.t-mt1{margin-top: $s1;}
+.t-mr1{margin-right: $s1;}
+.t-mb1{margin-bottom: $s1;}
+.t-ml1{margin-left: $s1;}
+.t-mln1{margin-left: -$s1;}
+.t-mrn1{margin-right: -$s1;}
+
+.t-mt2{margin-top: $s2;}
+.t-mr2{margin-right: $s2;}
+.t-mb2{margin-bottom: $s2;}
+.t-ml2{margin-left: $s2;}
+.t-mln2{margin-left: -$s2;}
+.t-mrn2{margin-right: -$s2;}
+
+.t-mt3{margin-top: $s3;}
+.t-mr3{margin-right: $s3;}
+.t-mb3{margin-bottom: $s3;}
+.t-ml3{margin-left: $s3;}
+.t-mln3{margin-left: -$s3;}
+.t-mrn3{margin-right: -$s3;}
+
+.t-mt4{margin-top: $s4;}
+.t-mr4{margin-right: $s4;}
+.t-mb4{margin-bottom: $s4;}
+.t-ml4{margin-left: $s4;}
+.t-mln4{margin-left: -$s4;}
+.t-mrn4{margin-right: -$s4;}

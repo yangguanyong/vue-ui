@@ -1,0 +1,40 @@
+@import "../mixins/bem";
+
+@include b(t-badge){
+  position: relative;
+  &:after{
+    content: attr(badge-content);
+    position: absolute;
+    top: -9px;
+    right: -18px;
+    background-color: #fd5b59;
+    color: #fff;
+    font-size: 12px;
+    text-align: center;
+    line-height: 16px;
+    min-width: 10px;
+    border-radius: 10px;
+    font-family: Arial;
+    padding: 0 5px;
+    z-index: 1;
+  }
+}
+
+@include b(t-badge-point){
+  position: relative;
+  &:after{
+    content: '';
+    position: absolute;
+    width: 8px;
+    height:8px;
+    background-color: #fd5b59;
+    font-size: 12px;
+    text-align: center;
+    line-height: 16px;
+    border-radius: 50%;
+    font-family: Arial;
+    z-index: 1;
+    right: -2px;
+    top:-2px;
+  }
+}

@@ -1,0 +1,28 @@
+@import "../mixins/bem";
+@import "../variables.scss";
+
+@include b(t-circle-progress){
+  @include e (wrap) {
+    position: relative;
+  }
+  @include e (ctn) {
+    -webkit-transform-origin: 50% 50%;
+    -webkit-transform: rotate(270deg);
+    -ms-transform-origin: 50% 50%;
+    -ms-transform: rotate(270deg);
+    transform-origin: 50% 50%;
+    transform: rotate(270deg);
+  }
+  @include e (word) {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+  }
+  @include e (percent) {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    text-align: center;
+    color: $main-col;
+  }
+}

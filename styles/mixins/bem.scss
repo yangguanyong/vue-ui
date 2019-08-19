@@ -1,0 +1,62 @@
+$elementSeparator: '__';
+$modifierSeparator: '--';
+
+@function selectorToStr($selector) {
+  $selector: inspect($selector);
+  $selector: str_slice($selector, 2, -2);
+  @return $selector;
+}
+
+@function containsModifier($selector) {
+  $selector: selectorToStr($selector);
+  @if str_index($selector, $modifierSeparator) {
+    @return true;
+  } @else {
+    @return false;
+  }
+}
+
+@function getBlock($selector) {
+  $selector: selectorToStr($selector);
+  @if str-index($selector, $modifierSeparator) {
+    $modifierStart: str-index($selector, $modifierSeparator) - 1;
+    @return str-slice($selector, 0, $modifierStart);
+  }
+  @else{
+    @return $selector
+  }
+}
+
+@mixin b($block) {
+  .#{$block} {
+    @content;
+  }
+}
+
+@mixin e($element) {
+  $selector: &;
+  $block: getBlock($selector);
+  @if containsModifier($selector) {
+    @at-root {
+      #{$selector} {
+        #{$block+$elementSeparator+$element} {
+          @content;
+        }
+      }
+    }
+  } @else {
+    @at-root {
+      #{$selector+$elementSeparator+$element} {
+        @content;
+      }
+    }
+  }
+}
+
+@mixin m($modifier) {
+  @at-root {
+    #{&}#{$modifierSeparator + $modifier} {
+      @content
+    }
+  }
+}

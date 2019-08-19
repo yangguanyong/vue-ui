@@ -1,0 +1,144 @@
+@import "../mixins/bem";
+
+@include b(t-input){
+  position: relative;
+  transition: box-shadow .2s ease;
+  input{
+    display: block;
+    width: 100%;
+    border: 1px $input-border-col solid;
+    border-radius: 2px;
+    outline: none;
+    box-sizing: border-box;
+    padding: 0 9px;
+    transition: border-color,box-shadow .2s ease;
+
+    height: 34px;
+    line-height: 32px;
+
+    font-size: 14px;
+
+    &::-webkit-input-placeholder{
+      color: $text-col-1;
+    }
+
+    &:-moz-placeholder{
+      color: $text-col-1;
+    }
+
+    &::-moz-placeholder{
+      color: $text-col-1;
+    }
+
+    &::-ms-input-placeholder{
+      color: $text-col-1;
+    }
+
+    &:focus{
+      border-color: $main-col;
+    }
+
+    &:disabled{
+      background-color: #f5f5f5;
+      color: $form-disabled-col;
+      cursor: not-allowed;
+    }
+  }
+
+  @include e(placeholder){
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 0 9px;
+    line-height: 34px;
+    font-size: 14px;
+    color: $text-col-1;
+    text-align: left;
+  }
+
+  @include e(icon){
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 30px;
+    text-align: center;
+    line-height: 34px;
+    color: $text-col-1;
+
+    &-suf{
+      right: 0;
+      left: auto;
+    }
+  }
+
+  @include m(inline){
+    display: inline-block;
+  }
+
+  @include m(sm){
+    input{
+      height: 28px;
+      line-height: 26px;
+      font-size: 12px;
+    }
+
+    @include e(placeholder){
+      font-size: 12px;
+      line-height: 28px;
+    }
+
+    @include e(icon){
+      line-height: 28px;
+      font-size: 14px;
+    }
+  }
+
+  @include m(disabled){
+    color: $form-disabled-col;
+    cursor: not-allowed;
+  }
+
+  @include m(search){
+    input{
+      width: calc(100% - 44px);
+    }
+
+    .t-input__search{
+      position: absolute;
+      top: 0;
+      right: 0;
+      min-width: 48px;
+      border-radius: 2px;
+    }
+
+    &.t-input--sm{
+      input{
+        width: calc(100% - 38px)
+      }
+
+      .t-input__search{
+        min-width: 38px;
+      }
+    }
+  }
+
+  @include m(focus){
+    box-shadow: 0 0 0 2px lighten($main-col, 42);
+    border-radius: 2px;
+  }
+
+
+  .t-form__control--error &{
+    input{
+      border-color: rgba($feature-col1, 0.92);
+      background-color: #ffe3e2;
+    }
+
+    &--focus{
+      box-shadow: 0 0 0 2px #ffe3e2
+    }
+  }
+}

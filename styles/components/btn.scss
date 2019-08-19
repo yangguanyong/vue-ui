@@ -1,0 +1,88 @@
+@import "../mixins/bem";
+@import "../mixins/btn";
+@import "../variables";
+
+$btn-col2: #87ba4c;
+$btn-col3: #ff5a5a;
+
+@include b(t-btn){
+  $root: &;
+  box-sizing: border-box;
+  vertical-align: middle;
+  outline: none;
+  display: inline-block;
+  cursor: pointer;
+  -webkit-user-select: none;
+  text-align: center;
+  border-width: 1px;
+  border-style: solid;
+  padding-top: 0;
+  padding-bottom: 0;
+
+  @include m(size-1){
+    @include btn-size(14px, 88px, 34px, 32px, 15px, 3px);
+    
+    &#{$root}--round{
+      border-radius: 17px;
+    }
+  }
+
+  @include m(size-2){
+    @include btn-size(12px, 70px, 28px, 26px, 12px, 3px);
+
+    &#{$root}--round{
+      border-radius: 14px;
+    }
+  }
+
+  @include m(type-1){
+    &.t-btn--col-1{
+      @include btn-type-1($main-col);
+    }
+    &.t-btn--col-2{
+      @include btn-type-1($btn-col2);
+    }
+    &.t-btn--col-3{
+      @include btn-type-1($btn-col3);
+    }
+  }
+
+  @include m(type-2){
+    &.t-btn--col-1{
+      @include btn-type-2($main-col);
+    }
+    
+    &.t-btn--col-2{
+      @include btn-type-2($btn-col2);
+    }
+    &.t-btn--col-3{
+      @include btn-type-1($btn-col3);
+    }
+  }
+
+  @include m(type-3){
+    &.t-btn--col-1{
+      @include btn-type-3($main-col);
+    }
+    
+    &.t-btn--col-2{
+      @include btn-type-3($btn-col2);
+    }
+
+    &.t-btn--col-3{
+      @include btn-type-1($btn-col3);
+    }
+  }
+
+  @include m(block){
+    display: block;
+    width: 100%;
+  }
+
+  &:disabled,&--disabled{
+    background-color: #eee !important;
+    border-color: #e7e7e7 !important;
+    color: $form-disabled-col !important;
+    cursor: not-allowed;
+  }
+}

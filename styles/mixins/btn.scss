@@ -1,0 +1,54 @@
+@mixin btn-size($font-size, $min-width, $height, $line-height, $padding-h, $border-radius){
+  min-width: $min-width;
+  height: $height;
+  line-height: $line-height;
+  padding-left: $padding-h;
+  padding-right: $padding-h;
+  border-radius: $border-radius;
+  font-size: $font-size;
+}
+
+@mixin btn-type-1($bg-col){
+  background-color: $bg-col;
+  color: #fff;
+  border-color: $bg-col;
+
+  &:hover{
+    background-color: lighten($bg-col, 5);
+  }
+
+  &:active{
+    background-color: darken($bg-col, 5);
+  }
+}
+
+@mixin btn-type-2($col){
+  background-color: #fff;
+  color: $col;
+  border-color: $col;
+
+  &:hover{
+    border-color: lighten($col, 15);
+  }
+
+  &:active{
+    border-color: darken($col, 5);
+    background-color: lighten($col, 45);
+  }
+}
+
+@mixin btn-type-3($col){
+  background-color: #fff;
+  color: $col;
+  border-color: $col;
+
+  &:hover{
+    background-color: $col;
+    color: #fff;
+  }
+
+  &:active{
+    background-color: darken($col, 5);
+    color: #fff;
+  }
+}

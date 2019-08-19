@@ -1,0 +1,241 @@
+@import "../mixins/bem";
+
+@include b(t-modal2){
+  position: fixed;
+  top: 0px;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1050;
+  overflow: hidden;
+  -webkit-overflow-scrolling: touch;
+  outline: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  // @include e(1){
+  //   z-index: 1052;
+  // }
+  // @include e(2){
+  //   z-index: 1054;
+  // }
+  // @include e(3){
+  //   z-index: 1056;
+  // }
+  // @include e(4){
+  //   z-index: 1058;
+  // }
+  // @include e(5){
+  //   z-index: 1060;
+  // }
+  // @include e(6){
+  //   z-index: 1062;
+  // }
+  // @include e(7){
+  //   z-index: 1064;
+  // }
+
+  .app-frame__body--isHasBroadcast &{
+    top: 34px;
+  }
+
+  @include e(mask){
+    background-color: rgba(0,0,0,.2);
+    position: fixed;
+    top: 0px;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1010;
+    // @include e(1){
+    //   z-index: 1051;
+    // }
+    // @include e(2){
+    //   z-index: 1053;
+    // }
+    // @include e(3){
+    //   z-index: 1055;
+    // }
+    // @include e(4){
+    //   z-index: 1057;
+    // }
+    // @include e(5){
+    //   z-index: 1059;
+    // }
+    // @include e(6){
+    //   z-index: 1061;
+    // }
+    // @include e(7){
+    //   z-index: 1063;
+    // }
+  }
+
+  @include e(layer){
+    height: 100%;
+  }
+
+  @include e(dialog){
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    background-color: #fff;
+    overflow: hidden;
+    width: 613px;
+    // @include m(normal0){
+    //   width: 613px - 0 * 10px;
+    // }
+    // @include m(normal1){
+    //   width: 613px - 1 * 10px;
+    // }
+    // @include m(normal2){
+    //   width: 613px - 2 * 10px;
+    // }
+    // @include m(normal3){
+    //   width: 613px - 3 * 10px;
+    // }
+    // @include m(normal4){
+    //   width: 613px - 4 * 10px;
+    // }
+    // @include m(normal5){
+    //   width: 613px - 5 * 10px;
+    // }
+    // @include m(normal6){
+    //   width: 613px - 6 * 10px;
+    // }
+    // @include m(normal7){
+    //   width: 613px - 7 * 10px;
+    // }
+
+    // @include m(bg0){
+    //   width: 800px - 0 * 10px;
+    // }
+    // @include m(bg1){
+    //   width: 800px - 1 * 10px;
+    // }
+    // @include m(bg2){
+    //   width: 800px - 2 * 10px;
+    // }
+    // @include m(bg3){
+    //   width: 800px - 3 * 10px;
+    // }
+    // @include m(bg4){
+    //   width: 800px - 4 * 10px;
+    // }
+    // @include m(bg5){
+    //   width: 800px - 5 * 10px;
+    // }
+    // @include m(bg6){
+    //   width: 800px - 6 * 10px;
+    // }
+
+    // @include m(lg0){
+    //   width: 1119px - 0 * 10px;
+    // }
+    // @include m(lg1){
+    //   width: 1119px - 1 * 10px;
+    // }
+    // @include m(lg2){
+    //   width: 1119px - 2 * 10px;
+    // }
+    // @include m(lg3){
+    //   width: 1119px - 3 * 10px;
+    // }
+    // @include m(lg4){
+    //   width: 1119px - 4 * 10px;
+    // }
+    // @include m(lg5){
+    //   width: 1119px - 5 * 10px;
+    // }
+    // @include m(lg6){
+    //   width: 1119px - 6 * 10px;
+    // }
+  }
+
+  @include e(header){
+    border-bottom: 1px #e1e1e1 solid;
+    color: #333;
+    position: relative;
+    height: 46px;
+    line-height: 44px;
+    font: normal 16px/46px verdana;
+    position: relative;
+    padding: 0 50px 0 20px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+
+    h2{
+      font-weight: normal;
+    }
+  }
+
+  @include e(close-icon){
+    width: 50px;
+    height: 46px;
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 0;
+    border-radius: 0 2px 0 0;
+    text-align: center;
+    font-size: 24px;
+    cursor: pointer;
+    color: #999;
+  }
+
+  @include e(body){
+    word-break: break-all;
+    background-color: #fff;
+    font-size: 14px;
+    height: calc(100% - 100px);
+    overflow: hidden;
+    @include m(no-footer){
+      height: calc(100% - 40px);
+    }
+
+    @include m(fix-y){
+      .ps-container{
+        height: 100%;
+      }
+    }
+  }
+
+  @include e(body-inner){
+    padding: 20px;
+    .t-table-wrap{
+      padding: 0;
+    }
+    .t-dropdown{
+      .select-pseudo{
+        min-width: 126px;
+      }
+    }
+    .t-dropdown-with-370{
+      .select-pseudo{
+        width: 370px;
+      }
+    }
+
+    .el-tabs--border-card{
+      margin: -20px;
+      border: none;
+      box-shadow: none;
+    }
+  }
+
+  @include e(footer){
+    padding: 10px 20px;
+    background: #fff;
+    text-align: right;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-top: 1px #e3e3e3 solid;
+
+    .t-btn{
+      min-width: 110px;
+      height: 34px;
+      line-height: 32px;
+      border-radius: 4px;
+      margin-left: 5px;
+    }
+  }
+}

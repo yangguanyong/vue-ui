@@ -1,0 +1,45 @@
+export default {
+  tUi: {
+    datepicker: {
+      now: 'Now',
+      clear: 'Clear',
+      confirm: 'Confirm',
+      today: 'Today',
+      to: ' to ',
+      chooseDate: 'Select date',
+      chooseDateRange: 'Select date',
+      hour: 'Hour',
+      minute: 'Minute',
+      secode: 'Second',
+      prevMonth: 'Prev month',
+      nextMonth: 'Next month',
+      prevYear: 'Prev year',
+      nextYear: 'Next year',
+      prevYear2: 'Prev ten years',
+      nextYear2: 'Next ten years',
+      year: '{0}',
+      week1: 'Mon',
+      week2: 'Tue',
+      week3: 'Wed',
+      week4: 'Thu',
+      week5: 'Fri',
+      week6: 'Sat',
+      week7: 'Sun',
+      month1: 'Jan',
+      month2: 'Feb',
+      month3: 'Mar',
+      month4: 'Apr',
+      month5: 'May',
+      month6: 'Jun',
+      month7: 'Jul',
+      month8: 'Aug',
+      month9: 'Sep',
+      month10: 'Oct',
+      month11: 'Nov',
+      month12: 'Dec',
+    },
+    select: {
+      searchPh: 'Search'
+    }
+  }
+};

@@ -1,0 +1,169 @@
+@import "../mixins/bem";
+
+$success: #42b983;
+$fail: #ff5d5b;
+$main: #374fbb;
+$gray: gray;
+
+@include b(t-upload){
+  overflow: hidden;
+  position: relative;
+  // text-align: center;
+  display: inline-block;
+  cursor: default;
+  input {
+    overflow: hidden;
+    position: fixed;
+    width: 1px;
+    height: 1px;
+    z-index: -1;
+    opacity: 0;
+  }
+}
+
+@include b(t-upload-file){
+  // width: 400px;
+  display: inline-block;
+  vertical-align: middle;
+  @include e(block){
+    // width: 400px;
+  }
+  @include e(item){
+    padding: 3px 35px 3px 30px;
+    position: relative;
+    cursor: pointer;
+    &:hover{
+      background: #e1e1e1;
+    }
+    @include m(green){
+      color: green;
+    }
+    @include m(red){
+      color: red;
+    }
+  }
+  @include e(desc){
+    vertical-align: bottom;
+    font-size: 12px;
+    color: gray;
+  }
+  @include e(icon){
+    position: absolute;
+    left: 10px;
+    top: 5px;
+  }
+  @include e(dele){
+    position: absolute;
+    right: 10px;
+    top: 5px;
+  }
+
+  @include e(loading){ // 上传modal
+    padding: 0px 0px 50px 0px;
+    @include e (title) {
+      margin-bottom: 10px;
+      color: $gray;
+    }
+  }
+
+  @include e(success){
+    position: relative;
+    @include e(content){
+    }
+    @include e(response){
+      padding-bottom: 10px;
+    }
+    @include e(filaname){
+      color: $gray;
+    }
+  }
+
+  @include e(fail){
+    position: relative;
+  }
+
+  @include e(logo){
+    font-size: 19px;
+    vertical-align: top;
+    @include m(success){
+      color: $main;
+    }
+    @include m(fail){
+      color: $fail;
+    }
+  }
+
+  @include e(head-title){
+    vertical-align: top;
+  }
+
+}
+
+@include b(t-upload-img){
+  width: 430px;
+  height: 150px;
+  display: inline-block;
+  @include e(img){
+    position: relative;
+    padding: 15px;
+    width: 150px;
+    height: 150px;
+    box-sizing: border-box;
+    float: left;
+    img{
+      width: 120px;
+      height: 120px;
+      vertical-align: middle;
+      border-radius: 50%;
+    }
+  }
+  @include e(opare) {
+    width: 280px;
+    height: 100%;
+    float: left;
+    padding: 60px 10px 10px 10px;
+    text-align: left;
+    box-sizing: border-box;
+    font-size: 14px;
+  }
+}
+
+@include b(area-loading){
+  text-align: center;
+  top: 50%;
+  position: absolute;
+  margin-top: -21px;
+  width: 120px;
+  @include e(circular){
+    height: 42px;
+    width: 42px;
+    animation: loading-rotate 2s linear infinite;
+  }
+  @include e(path){
+    animation: loading-dash 1.5s ease-in-out infinite;
+    stroke-dasharray: 90,150;
+    stroke-dashoffset: 0;
+    stroke-width: 2;
+    stroke: #293E98;
+    stroke-linecap: round;
+  }
+}
+@keyframes loading-rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes loading-dash {
+  0% {
+    stroke-dasharray: 1, 200;
+    stroke-dashoffset: 0;
+  }
+  50% {
+    stroke-dasharray: 90, 150;
+    stroke-dashoffset: -40px;
+  }
+  100% {
+    stroke-dasharray: 90, 150;
+    stroke-dashoffset: -120px;
+  }
+}

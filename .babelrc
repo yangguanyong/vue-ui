@@ -1,0 +1,13 @@
+{
+  "presets": [
+    [
+      "@vue/app",
+      {
+        "targets": [
+          ">0.1% in CN",
+          "not ie <= 8"
+        ]
+      }
+    ]
+  ]
+}

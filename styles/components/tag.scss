@@ -1,0 +1,88 @@
+@import "../mixins/bem";
+@import "../variables";
+
+@include b(t-tag){
+  display: inline-block;
+  vertical-align: top;
+  width: auto;
+  background-color: #fff;
+  text-align: center;
+  border-radius: 3px;
+  cursor: pointer;
+  position: relative;
+  /*内部文字不被选中*/
+  -moz-user-select:none;/*火狐*/
+  -webkit-user-select:none;/*webkit浏览器*/
+  -ms-user-select:none;/*IE10*/
+  user-select:none;
+  &+.t-tag{
+    margin-left: 6px;
+  }
+
+  @include e(switch){
+    position: absolute;
+  }
+
+  /* 边框样式 */
+  @include m(type-1){
+    border: 1px $main-col solid;
+    color: $main-col;
+  }
+
+  /* 填充样式 */
+  @include m(type-2){
+    border: 1px $main-col solid;
+    background-color: $main-col;
+    color: #fff;
+  }
+
+  /* 普通尺寸 */
+  @include m(size-1){
+    font-size: 14px;
+    height: 26px;
+    line-height: 26px;
+    padding: 0 20px;
+
+    @include m(deletable){
+      padding: 0 25px 0 15px;
+
+      @include e(switch){
+        font: 14px / 1 cursive;
+        top: 6px;
+        right: 6px;
+      }
+
+    }
+  }
+
+  /* 小尺寸 */
+  @include m(size-2){
+    font-size: 12px;
+    height: 22px;
+    line-height: 22px;
+    padding: 0 15px;
+
+    @include m(deletable){
+      padding: 0 20px 0 10px;
+  
+      @include e(switch){
+        font: 12px / 1 cursive;
+        top: 6px;
+        right: 5px;
+      }
+
+    }
+  }
+
+  /* 硬性规定宽度 */
+  @include m(nonauto){
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
+  /* 虚线边框 */
+  @include m(dashed){
+    border: 1px $text-col-1 dashed;
+  }
+}

@@ -1,0 +1,147 @@
+@import "../mixins/bem";
+@import "../variables";
+
+@include b(t-selectable-tag){
+  display: inline-block;
+  vertical-align: top;
+  height: 32px;
+  line-height: 32px;
+  background-color: #fff;
+  color: $text-col-1;
+  font-size: 14px;
+  text-align: center;
+  border-radius: 4px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  cursor: pointer;
+  overflow: hidden;
+  margin-right: 10px;
+  /*内部文字不被选中*/
+  -moz-user-select:none;/*火狐*/
+  -webkit-user-select:none;/*webkit浏览器*/
+  -ms-user-select:none;/*IE10*/
+  user-select:none;
+
+  /* 第一种样式 */
+  @include m(type-1){
+    border: 1px $tag-border-col solid;
+
+    @include m(active){
+      position: relative;
+      border: 1px $main-col solid;
+      color: $main-col;
+  
+      &:after{
+        content: '';
+        position: absolute;
+        right: 1px;
+        bottom: 5px;
+        width:8px;
+        height:3px;
+        border-top: none;
+        border-right: none;
+        border-left: 2px solid #fff;
+        border-bottom: 2px solid #fff;
+        transform: rotate(-50deg);
+        -ms-transform: rotate(-50deg); 	/* IE 9 */
+        -moz-transform: rotate(-50deg); 	/* Firefox */
+        -webkit-transform: rotate(-50deg); /* Safari 和 Chrome */
+        -o-transform: rotate(-50deg);
+      }
+
+      &:before{
+        content: '';
+        position: absolute;
+        right: -3px;
+        bottom: 0px;
+        width:0;
+        height:0;
+        border-top: 15px solid transparent;
+        border-right: 14px solid $main-col;
+        border-left: 8px solid transparent;
+        border-bottom: 9px solid $main-col;
+      }
+  
+      @include m(disabled){
+        position: relative;
+        color: $text-col-1;
+        &:before{
+          content: '';
+          position: absolute;
+          right: -3px;
+          bottom: 0px;
+          width:0;
+          height:0;
+          border-top: 15px solid transparent;
+          border-right: 14px solid #e5e5e5;
+          border-left: 8px solid transparent;
+          border-bottom: 9px solid #e5e5e5;
+        }
+        &:after{
+          content: '';
+          position: absolute;
+          right: 1px;
+          bottom: 5px;
+          width:8px;
+          height:3px;
+          border-top: none;
+          border-right: none;
+          border-left: 2px solid #fff;
+          border-bottom: 2px solid #fff;
+          transform: rotate(-50deg);
+          -ms-transform: rotate(-50deg); 	/* IE 9 */
+          -moz-transform: rotate(-50deg); 	/* Firefox */
+          -webkit-transform: rotate(-50deg); /* Safari 和 Chrome */
+          -o-transform: rotate(-50deg);
+        }
+      }
+    }
+
+    @include m(disabled){
+      cursor: not-allowed;
+      border: 1px $tag-border-col solid;
+      background-color: #f5f5f5;
+    }
+  }
+
+  /* 第二种样式 */
+  @include m(type-2){
+    border: 1px transparent solid;
+
+    @include m(active){
+      border: 1px $main-col solid;
+      background-color: $main-col;
+      color: #fff;
+
+      @include m(disabled){
+        cursor: not-allowed;
+        background-color: #f5f5f5;
+        border: 1px $tag-border-col solid;
+        color: $text-col-1;
+      }
+    }
+
+    @include m(disabled){
+      cursor: not-allowed;
+    }
+  }
+
+  /* 小尺寸 */
+  @include m(sm){
+    height: 28px;
+    line-height: 26px;
+    width: 50px;
+    font-size: 12px;
+  }
+
+  /* 自适应 */
+  @include m(auto){
+    width: auto;
+    padding: 0px 15px;
+  }
+
+  /* 虚线边框 */
+  @include m(dashed){
+    border: 1px $text-col-1 dashed;
+  }
+}
